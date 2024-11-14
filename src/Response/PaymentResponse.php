@@ -40,7 +40,6 @@ class PaymentResponse
         $response->cardToken = (string) $xml->{'card-token'}->{'token-id'};
         $response->maskedAccountNumber = (string) $xml->{'card-token'}->{'masked-account-number'};
 
-        // Добавляем данные о статусе
         if ($xml->statuses && $xml->statuses->status) {
             $response->status = [
                 'code' => (string) $xml->statuses->status['code'],
@@ -49,14 +48,12 @@ class PaymentResponse
             ];
         }
 
-        // Добавляем информацию о карте
         if ($xml->card) {
             $response->expirationMonth = (string) $xml->card->{'expiration-month'};
             $response->expirationYear = (string) $xml->card->{'expiration-year'};
             $response->cardType = (string) $xml->card->{'card-type'};
         }
 
-        // Добавляем данные о request-id и transaction-type
         $response->requestId = (string) $xml->{'request-id'};
         $response->transactionType = (string) $xml->{'transaction-type'};
 
