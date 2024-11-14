@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <!-- Request element -->
+    <xs:element name="request">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="transaction-id" type="xs:string"/>
+                <xs:element name="amount" type="xs:decimal"/>
+                <xs:element name="currency" type="xs:string"/>
+                <xs:element name="account-holder">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="name" type="xs:string"/>
+                            <xs:element name="email" type="xs:string"/>
+                            <xs:element name="phone" type="xs:string"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="card">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="number" type="xs:string"/>
+                            <xs:element name="expiry-month" type="xs:string"/>
+                            <xs:element name="expiry-year" type="xs:string"/>
+                            <xs:element name="cvv" type="xs:string"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="shipping-address">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="address-line" type="xs:string"/>
+                            <xs:element name="city" type="xs:string"/>
+                            <xs:element name="postal-code" type="xs:string"/>
+                            <xs:element name="country" type="xs:string"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- Response element -->
+    <xs:element name="response">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="transaction-id" type="xs:string"/>
+                <xs:element name="card-token" type="xs:string"/>
+                <xs:element name="status">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="code" type="xs:string"/>
+                            <xs:element name="description" type="xs:string"/>
+                            <xs:element name="severity" type="xs:string"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- Error element in the response -->
+    <xs:element name="error-response">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="transaction-id" type="xs:string"/>
+                <xs:element name="status">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="code" type="xs:string"/>
+                            <xs:element name="description" type="xs:string"/>
+                            <xs:element name="severity" type="xs:string"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+</xs:schema>

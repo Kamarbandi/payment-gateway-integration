@@ -1,0 +1,22 @@
+{
+    "name": "traso/payment-library",
+    "description": "A PHP library for encrypting credit card data and interacting with payment provider APIs.",
+    "type": "library",
+    "autoload": {
+        "psr-4": {
+            "ProviderLibrary\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Azad Kamarbandi"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require-dev": {
+        "phpunit/phpunit": "^11.4"
+    },
+  "require": {
+    "ext-curl": "*"
+  }
+}
